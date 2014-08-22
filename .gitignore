@@ -57,3 +57,6 @@ target/
 
 # production
 codecademy_todo/settings.py
+
+# database
+db.sqlite3
