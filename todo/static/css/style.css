@@ -12,6 +12,10 @@ h2 {
     text-align: center;
 }
 
+input:focus, button:focus {
+    outline: none;
+}
+
 .header {
     background-color: #98D1FF;
     height: 90px;
@@ -59,6 +63,9 @@ h2 {
     max-width: 145px;
     height: 44px;
     margin-left: 3.26%;
+    position: relative;
+    top: 1px;
+    float: right;
 }
 
 article {
@@ -78,6 +85,10 @@ article input[type='checkbox'] {
     position: relative;
     top: -2px;
     left: .6%;
+}
+
+.done-item {
+    text-decoration: line-through;
 }
 
 .clearfix:after {
