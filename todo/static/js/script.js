@@ -31,7 +31,6 @@ $(document).ready(function () {
                 addTaskInput.val('');
                 var todoGroup = $('.todo-item');
                 todoGroup.first().before('<article class="todo-item"><input type="checkbox">' + data[0].fields.description + '</article>');
-                console.log(data[0].pk);
             },
             'json'
         );
