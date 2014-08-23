@@ -8,7 +8,7 @@ class NewTaskForm(forms.ModelForm):
     class Meta():
         model = Task
         fields = ['description']
-        widgets={
+        widgets = {
             'description': TextInput(attrs={
                 'placeholder': 'Enter new task...',
                 'autofocus': True
