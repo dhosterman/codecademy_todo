@@ -7,9 +7,15 @@
     <link rel="stylesheet" href="{% static "css/style.css" %}">
 </head>
 <body>
-    <!-- navigation bar -->
+    <!-- header -->
     <div class="header">
         <h1>Get Things Done!</h1>
+    </div>
+
+    <!-- add task -->
+    <div class="add-task">
+        {{ new_task_form }}
+        <button name="Add Task">Add Task</button>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

@@ -2,6 +2,7 @@ body {
     font-family: Helvetica;
     font-size: 16px;
     margin: 0;
+    position: relative;
 }
 
 .header {
@@ -18,3 +19,75 @@ body {
     line-height: 1.203125em;
     margin: 3px 0 3px;
 }
+
+.add-task {
+    position: relative;
+    margin-top: 72px;
+}
+
+.add-task label {
+    display: none;
+}
+
+.add-task input {
+    border-radius: 12px;
+    background: #E4E1E1;
+    border: 1px solid #979797;
+    width: 64.16%;
+    height: 44px;
+    left: 9.57%;
+    position: relative;
+    font-size: 1.25em;
+}
+
+.add-task button {
+    border-radius: 12px;
+    background: #466680;
+    -moz-box-shadow:    2px 2px 4px 0px rgba(0,0,0,0.50);
+    box-shadow:         2px 2px 4px 0px rgba(0,0,0,0.50);
+
+    font-family: Helvetica;
+    font-size: 1.25em;
+    color: #E6F4FF;
+    line-height: 24px;
+    width: 14.16%;
+    max-width: 145px;
+    height: 44px;
+    left: 11.23%;
+    position: relative;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+border-radius: 12px;
+/* Rectangle 7: */
+background: #466680;
+border: 1px solid #737A7F;
+-moz-box-shadow:    2px 2px 4px 0px rgba(0,0,0,0.50);
+box-shadow:         2px 2px 4px 0px rgba(0,0,0,0.50);
+
+font-family: Helvetica;
+font-size: 20px;
+color: #E6F4FF;
+line-height: 24px;
+/* Add Item: */
+
+/* Rectangle 6: */
+
+border-radius: 12px;
+/* Rectangle 8: */
+background: #E4E1E1;
+border: 1px solid #979797;
+
+/* Line: */
+border: 1px solid #979797;
+
+font-family: Helvetica-Bold;
+font-size: 20px;
+color: #737A7F;
+line-height: 24px;
+/* This is a new task…: */
