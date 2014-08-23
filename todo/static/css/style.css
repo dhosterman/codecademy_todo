@@ -22,7 +22,8 @@ body {
 
 .add-task {
     position: relative;
-    margin-top: 72px;
+    width: 80.86%;
+    margin: 72px auto 0 auto;
 }
 
 .add-task label {
@@ -33,11 +34,9 @@ body {
     border-radius: 12px;
     background: #E4E1E1;
     border: 1px solid #979797;
-    width: 64.16%;
     height: 44px;
-    left: 9.57%;
-    position: relative;
     font-size: 1.25em;
+    width: 82.51%;
 }
 
 .add-task button {
@@ -50,11 +49,10 @@ body {
     font-size: 1.25em;
     color: #E6F4FF;
     line-height: 24px;
-    width: 14.16%;
+    width: 14.23%;
     max-width: 145px;
     height: 44px;
-    left: 11.23%;
-    position: relative;
+    margin-left: 3.26%;
 }
 
 .clearfix:after {
@@ -62,32 +60,3 @@ body {
   display: table;
   clear: both;
 }
-
-border-radius: 12px;
-/* Rectangle 7: */
-background: #466680;
-border: 1px solid #737A7F;
--moz-box-shadow:    2px 2px 4px 0px rgba(0,0,0,0.50);
-box-shadow:         2px 2px 4px 0px rgba(0,0,0,0.50);
-
-font-family: Helvetica;
-font-size: 20px;
-color: #E6F4FF;
-line-height: 24px;
-/* Add Item: */
-
-/* Rectangle 6: */
-
-border-radius: 12px;
-/* Rectangle 8: */
-background: #E4E1E1;
-border: 1px solid #979797;
-
-/* Line: */
-border: 1px solid #979797;
-
-font-family: Helvetica-Bold;
-font-size: 20px;
-color: #737A7F;
-line-height: 24px;
-/* This is a new task…: */
