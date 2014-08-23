@@ -18,13 +18,15 @@ $(document).ready(function () {
     
     // add task button handler
     var addTaskButton = $('button[name="Add Task"]');
+    var addTaskInput = $('#id_description');
     addTaskButton.click(function () {
         $.post(
             '/todo/add_task', 
             {
-                description: $('#id_description').val()
+                description: addTaskInput.val()
             }, 
             function (data, textStatus, jqXHR) {
+                addTaskInput.val('');
                 console.log(data[0].pk);
             },
             'json'
