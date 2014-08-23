@@ -47,7 +47,7 @@ input:focus, button:focus {
     border: 1px solid #979797;
     height: 44px;
     font-size: 1.25em;
-    width: 82.51%;
+    width: 80%;
 }
 
 .add-task button {
@@ -96,4 +96,17 @@ article input[type='checkbox'] {
   content: "";
   display: table;
   clear: both;
+}
+
+@media only screen and (max-width: 570px) {
+    .header {
+        height: 180px;
+        padding: 0 50px 0 50px;
+    }
+}
+
+@media only screen and (max-width: 835px)  {
+    .add-task button {
+        line-height: 1.03em;
+    }
 }
