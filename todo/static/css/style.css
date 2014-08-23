@@ -5,6 +5,13 @@ body {
     position: relative;
 }
 
+h2 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #466680;
+    text-align: center;
+}
+
 .header {
     background-color: #98D1FF;
     height: 90px;
@@ -20,7 +27,7 @@ body {
     margin: 3px 0 3px;
 }
 
-.add-task {
+.add-task, section {
     position: relative;
     width: 80.86%;
     margin: 72px auto 0 auto;
@@ -44,7 +51,6 @@ body {
     background: #466680;
     -moz-box-shadow:    2px 2px 4px 0px rgba(0,0,0,0.50);
     box-shadow:         2px 2px 4px 0px rgba(0,0,0,0.50);
-
     font-family: Helvetica;
     font-size: 1.25em;
     color: #E6F4FF;
@@ -53,6 +59,25 @@ body {
     max-width: 145px;
     height: 44px;
     margin-left: 3.26%;
+}
+
+article {
+    border-radius: 12px;
+    border: 1px solid #979797;
+    font-family: Helvetica;
+    font-size: 1.25em;
+    color: #466680;
+    line-height: 44px;
+    width: 100%;
+    height: 44px;
+    position: relative;
+}
+
+article input[type='checkbox'] {
+    margin-right: 1.72%;
+    position: relative;
+    top: -2px;
+    left: .6%;
 }
 
 .clearfix:after {
