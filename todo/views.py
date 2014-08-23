@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from .forms import NewTaskForm
 
@@ -12,3 +12,8 @@ def home(request):
         },
         RequestContext(request)
     )
+
+
+def add_task(request):
+    print(request.user)
+    return redirect(home)

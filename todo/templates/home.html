@@ -14,6 +14,7 @@
 
     <!-- add task -->
     <div class="add-task">
+        {% csrf_token %}
         {{ new_task_form }}
         <button name="Add Task">Add Task</button>
     </div>
@@ -30,5 +31,7 @@
         <article class="done-item"><input type="checkbox" checked>This thing is done</article>
     </section>
 </body>
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
+<script src="{% static "bower_components/jquery-cookie/jquery.cookie.js" %}"></script>
+<script src="{% static "js/script.js" %}"></script>
 </html>
