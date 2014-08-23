@@ -1,4 +1,20 @@
 body {
     font-family: Helvetica;
     font-size: 16px;
+    margin: 0;
+}
+
+.header {
+    background-color: #98D1FF;
+    height: 90px;
+    border: 1px solid #979797;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 4em;
+    font-weight: normal;
+    color: #E6F4FF;
+    line-height: 1.203125em;
+    margin: 3px 0 3px;
 }
