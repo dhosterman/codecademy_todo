@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from .forms import NewTaskForm
+from .models import Task
 
 
 # Create your views here.
@@ -15,5 +16,8 @@ def home(request):
 
 
 def add_task(request):
-    print(request.user)
+    user = request.user
+    description = request.POST.get('description')
+    new_task = Task(owner=user, description=description)
+    new_task.save()
     return redirect(home)

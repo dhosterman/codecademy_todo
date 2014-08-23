@@ -22,7 +22,7 @@ $(document).ready(function () {
         $.post(
             '/todo/add_task', 
             {
-                
+                description: $('#id_description').val()
             }, 
             function (data, textStatus, jqXHR) {
 
