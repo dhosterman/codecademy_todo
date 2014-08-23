@@ -15,10 +15,12 @@ $(document).ready(function () {
             }
         }
     });
-    
-    // add task button handler
+
+    // dom elements
     var addTaskButton = $('button[name="Add Task"]');
     var addTaskInput = $('#id_description');
+    
+    // add task button handler
     addTaskButton.click(function () {
         $.post(
             '/todo/add_task', 
@@ -27,6 +29,8 @@ $(document).ready(function () {
             }, 
             function (data, textStatus, jqXHR) {
                 addTaskInput.val('');
+                var todoGroup = $('.todo-item');
+                todoGroup.first().before('<article class="todo-item"><input type="checkbox">' + data[0].fields.description + '</article>');
                 console.log(data[0].pk);
             },
             'json'
