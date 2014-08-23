@@ -22,6 +22,9 @@
     <!-- todo items -->
     <section class="to-do">
         <h2>To Do</h2>
+        {% for task in tasks %}
+            <article class="todo-item"><input type="checkbox">{{ task.description }}</article>
+        {% endfor %}
         <article class="todo-item"><input type="checkbox">Do this one thing</article>
     </section>
 
