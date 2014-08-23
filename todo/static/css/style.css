@@ -51,6 +51,7 @@ input:focus, button:focus {
 }
 
 .add-task button {
+    border: 0;
     border-radius: 12px;
     background: #466680;
     -moz-box-shadow:    2px 2px 4px 0px rgba(0,0,0,0.50);
