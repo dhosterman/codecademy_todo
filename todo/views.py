@@ -1,5 +1,7 @@
-from django.shortcuts import render_to_response, redirect
+from django.shortcuts import render_to_response
+from django.http import HttpResponse
 from django.template import RequestContext
+from django.core import serializers
 from .forms import NewTaskForm
 from .models import Task
 
@@ -16,8 +18,11 @@ def home(request):
 
 
 def add_task(request):
+    """ given a request with a decription and a valid user, insert
+    a new database record representing a task and return a json object
+    representing the newly inserted record """
     user = request.user
     description = request.POST.get('description')
     new_task = Task(owner=user, description=description)
     new_task.save()
-    return redirect(home)
+    return HttpResponse(serializers.serialize('json', [new_task]))

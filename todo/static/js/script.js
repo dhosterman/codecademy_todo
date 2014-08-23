@@ -25,8 +25,9 @@ $(document).ready(function () {
                 description: $('#id_description').val()
             }, 
             function (data, textStatus, jqXHR) {
-
-            }
+                console.log(data[0].pk);
+            },
+            'json'
         );
     })
 
