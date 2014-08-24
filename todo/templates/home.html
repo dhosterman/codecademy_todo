@@ -25,7 +25,7 @@
             <form action="{% url "todo.views.login" %}" method="post">
                 {% csrf_token %}
                 {{ login_form }}
-                <button name="Login">Login</button>
+                <button name="Login">Login</button> or <button name="Register">Register</button>
             </form>
         </div>
     {% endif %}
