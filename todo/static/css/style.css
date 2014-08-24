@@ -171,6 +171,24 @@ article input[type='text'] {
         height: 180px;
         padding: 0 50px 0 50px;
     }
+
+    .login {
+        text-align: center;
+    }
+
+    .login form {
+        float: none;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .register {
+        text-align: center;
+        height: 40px;
+    }
+    .register form {
+        float: none;
+    }
 }
 
 @media only screen and (max-width: 835px)  {
