@@ -61,7 +61,7 @@ $(document).ready(function () {
     });
 
     // apply checkbox handler to all existing todo items
-    $('.to-do > input[type="checkbox"]').each(function () {
+    $('.to-do input[type="checkbox"]').each(function () {
         addCheckHandlerUnfinished($(this));
     });
 
