@@ -58,3 +58,13 @@ def delete_task(request):
     task = Task.objects.get(pk=task_id)
     task.delete()
     return HttpResponse(serializers.serialize('json', [task]))
+
+
+def edit_task(request):
+    """ given a request with a task, set the task description in the database and return a json object representing the newly updated record """
+    task_id = request.POST.get('task_id')
+    description = request.POST.get('description')
+    task = Task.objects.get(pk=task_id)
+    task.description = description
+    task.save()
+    return HttpResponse(serializers.serialize('json', [task]))
