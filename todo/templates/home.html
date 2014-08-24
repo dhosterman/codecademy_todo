@@ -17,6 +17,11 @@
                 Welcome back! <a href="{% url "todo.views.logout" %}">Logout?</a>
             {% endif %}
         </div>
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
     </div>
 
     <!-- login -->

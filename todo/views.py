@@ -4,6 +4,7 @@ from django.template import RequestContext
 from django.core import serializers
 from django.contrib.auth import authenticate, login as login_user, logout as logout_user
 from django.contrib.auth.models import User
+from django.contrib import messages
 from .forms import NewTaskForm, LoginForm, RegisterForm
 from .models import Task
 
@@ -84,6 +85,12 @@ def login(request):
     user = authenticate(username=username, password=password)
     if user is not None and user.is_active:
         login_user(request, user)
+    else:
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'User or password are incorrect.'
+        )
     return redirect(home)
 
 
