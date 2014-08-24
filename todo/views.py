@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.core import serializers
 from django.contrib.auth import authenticate, login as login_user, logout as logout_user
+from django.contrib.auth.models import User
 from .forms import NewTaskForm, LoginForm, RegisterForm
 from .models import Task
 
@@ -89,4 +90,22 @@ def login(request):
 def logout(request):
     """ logout the user """
     logout_user(request)
+    return redirect(home)
+
+
+def register(request):
+    """ register a new user """
+    username = request.POST.get('username')
+    first_name = request.POST.get('first_name')
+    last_name = request.POST.get('last_name')
+    password = request.POST.get('password')
+    user = User.objects.create_user(
+        username=username,
+        first_name=first_name,
+        last_name=last_name,
+        password=password
+    )
+    user.save()
+    authenticated = authenticate(username=username, password=password)
+    login_user(request, authenticated)
     return redirect(home)
