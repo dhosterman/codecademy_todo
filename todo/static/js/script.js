@@ -2,8 +2,21 @@
     function addCheckHandlerUnfinished (element) {
         element.change(function () {
             if (this.checked) {
-                var doneGroup = $('.done-item');
-                doneGroup.first().before($(this).parent().clone());
+                var taskId = element.parent().data('task-id');
+                $.post(
+                    '/todo/complete_task',
+                    {
+                        task_id: taskId
+                    },
+                    function (data, textStatus, jqXHR) {
+                        var doneGroup = $('.done-item');
+                        var doneItem = element.parent().clone();
+                        element.parent().remove();
+                        doneItem.removeClass('todo-item');
+                        doneItem.addClass('done-item');
+                        doneGroup.first().before(doneItem);
+                    }
+                );
             }
         })
     }
