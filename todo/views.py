@@ -28,3 +28,13 @@ def add_task(request):
     new_task = Task(owner=user, description=description)
     new_task.save()
     return HttpResponse(serializers.serialize('json', [new_task]))
+
+
+def complete_task(request):
+    """ given a request with a task, set the task to completed in the database
+    and return a json object representing the newly updated record """
+    task_id = request.POST.get('task-id')
+    task = Task.objects.get(pk=task_id)
+    task.completed = True
+    task.save()
+    return HttpResponse(serializers.serialize('json', [task]))
