@@ -96,6 +96,20 @@ article input[type='checkbox'] {
     left: .6%;
 }
 
+article button {
+    background-image: url('/static/assets/images/delete.png');
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 12px;
+    padding: 0;
+    border: 0;
+    background-color: #FFFFFF;
+    float: right;
+    position: relative;
+    top: 16px;
+    right: 1%;
+}
+
 .done-item {
     text-decoration: line-through;
 }

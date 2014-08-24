@@ -23,7 +23,7 @@
     <section class="to-do">
         <h2>To Do</h2>
         {% for task in tasks %}
-            <article class="todo-item" data-task-id={{ task.id }}><input type="checkbox">{{ task.description }}</article>
+            <article class="todo-item" data-task-id={{ task.id }}><input type="checkbox">{{ task.description }}<button name="Delete Task"></button></article>
         {% endfor %}
     </section>
 
