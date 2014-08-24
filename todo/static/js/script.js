@@ -1,26 +1,38 @@
 // add checkbox handler to todo item
-    function addCheckHandlerUnfinished (element) {
-        element.change(function () {
-            if (this.checked) {
-                var taskId = element.parent().data('task-id');
-                $.post(
-                    '/todo/complete_task',
-                    {
-                        task_id: taskId
-                    },
-                    function (data, textStatus, jqXHR) {
-                        var doneGroup = $('.done-item');
-                        var doneItem = element.parent().clone();
-                        element.parent().remove();
-                        doneItem.removeClass('todo-item');
-                        doneItem.addClass('done-item');
-                        doneItem.off('click');
-                        doneGroup.first().before(doneItem);
-                    }
-                );
-            }
-        })
-    }
+function toggleCompleted (element) {
+    element.change(function () {
+        var taskId = element.parent().data('task-id');
+        var task = element.parent();
+        if (this.checked) {
+            $.post(
+                '/todo/complete_task',
+                {
+                    task_id: taskId
+                },
+                function (data, textStatus, jqXHR) {
+                    var doneGroup = $('.done-item');
+                    doneGroup.first().before(task.detach());
+                    task.removeClass('todo-item');
+                    task.addClass('done-item');
+                }
+            );
+        } else {
+            var taskId = element.parent().data('task-id');
+            $.post(
+                '/todo/complete_task',
+                {
+                    task_id: taskId
+                },
+                function (data, textStatus, jqXHR) {
+                    var todoGroup = $('.todo-item');
+                    todoGroup.first().before(task.detach());
+                    task.removeClass('done-item');
+                    task.addClass('todo-item');
+                }
+            );
+        }
+    })
+}
 
 $(document).ready(function () {
 
@@ -61,8 +73,8 @@ $(document).ready(function () {
     });
 
     // apply checkbox handler to all existing todo items
-    $('.to-do input[type="checkbox"]').each(function () {
-        addCheckHandlerUnfinished($(this));
+    $('input[type="checkbox"]').each(function () {
+        toggleCompleted($(this));
     });
 
 });

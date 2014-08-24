@@ -35,6 +35,7 @@ def add_task(request):
 def complete_task(request):
     """ given a request with a task, set the task to completed in the database
     and return a json object representing the newly updated record """
+    print(request.POST)
     task_id = request.POST.get('task_id')
     task = Task.objects.get(pk=task_id)
     task.completed = True
