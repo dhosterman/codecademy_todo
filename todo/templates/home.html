@@ -12,6 +12,17 @@
         <h1>Get Things Done!</h1>
     </div>
 
+    <!-- login -->
+    {% if not user.is_active %}
+        <div class="login">
+            <form action="{% url "todo.views.login" %}" method="post">
+                {% csrf_token %}
+                {{ login_form }}
+                <button name="Login">Login</button>
+            </form>
+        </div>
+    {% endif %}
+
     <!-- add task -->
     <div class="add-task">
         {% csrf_token %}

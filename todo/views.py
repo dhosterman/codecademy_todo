@@ -1,8 +1,9 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.core import serializers
-from .forms import NewTaskForm
+from django.contrib.auth import authenticate, login as login_user
+from .forms import NewTaskForm, LoginForm
 from .models import Task
 
 
@@ -10,12 +11,15 @@ from .models import Task
 def home(request):
     tasks = Task.objects.all().order_by('-id').filter(completed=False)
     completed_tasks = Task.objects.all().order_by('-id').filter(completed=True)
+    user = request.user
     return render_to_response(
         'home.html',
         {
             'new_task_form': NewTaskForm(),
+            'login_form': LoginForm(),
             'tasks': tasks,
-            'completed_tasks': completed_tasks
+            'completed_tasks': completed_tasks,
+            'user': user
         },
         RequestContext(request)
     )
@@ -68,3 +72,14 @@ def edit_task(request):
     task.description = description
     task.save()
     return HttpResponse(serializers.serialize('json', [task]))
+
+
+def login(request):
+    """ given a username and a password, log the user in and return them to the
+    todo page """
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    user = authenticate(username=username, password=password)
+    if user is not None and user.is_active:
+        login_user(request, user)
+    return redirect(home)
