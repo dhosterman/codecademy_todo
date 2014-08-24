@@ -54,13 +54,31 @@ function addDeleteHandler (element) {
 // add edit handler to todo item
 function addEditHandler (element) {
     element.click(function () {
+        var taskId = element.parent().data('task-id');
         var task = element.parent();
-        if (task.children('.description').is(':visible')) {
-            task.children('.description').hide();
-            task.children('input[type="text"]').show().focus()
-            .blur(function () {
-                task.children('input[type="text"]').hide();
-                task.children('.description').show();
+        var taskInput = task.children('input[type="text"]')
+        var taskDescription = task.children('.description')
+        if (taskDescription.is(':visible')) {
+            taskDescription.hide();
+            taskInput.show().focus()
+            var strLength= taskInput.val().length;
+            taskInput[0].setSelectionRange(strLength, strLength);
+            taskInput.blur(function () {
+                $.post(
+                    '/todo/edit_task',
+                    {
+                        task_id: taskId,
+                        description: taskInput.val()
+                    },
+                    function (data, textStatus, jqXHR) {
+                        taskInput.hide();
+                        taskInput.val(data[0].fields.description);
+                        taskDescription.text(data[0].fields.description);
+                        taskDescription.show();
+                    },
+                    'json'
+                )
+                
             });
         }        
     })
