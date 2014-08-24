@@ -10,6 +10,13 @@
     <!-- header -->
     <div class="header">
         <h1>Get Things Done!</h1>
+        <div class="logout">
+            {% if user.is_active and user.first_name %}
+                Welcome back, {{ user.first_name }}! <a href="{% url "todo.views.logout" %}">Logout?</a>
+            {% elif user.is_active %}
+                Welcome back! <a href="{% url "todo.views.logout" %}">Logout?</a>
+            {% endif %}
+        </div>
     </div>
 
     <!-- login -->

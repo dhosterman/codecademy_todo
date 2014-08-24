@@ -2,7 +2,7 @@ from django.shortcuts import render_to_response, redirect
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.core import serializers
-from django.contrib.auth import authenticate, login as login_user
+from django.contrib.auth import authenticate, login as login_user, logout as logout_user
 from .forms import NewTaskForm, LoginForm
 from .models import Task
 
@@ -82,4 +82,10 @@ def login(request):
     user = authenticate(username=username, password=password)
     if user is not None and user.is_active:
         login_user(request, user)
+    return redirect(home)
+
+
+def logout(request):
+    """ logout the user """
+    logout_user(request)
     return redirect(home)

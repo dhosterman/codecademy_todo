@@ -5,6 +5,10 @@ body {
     position: relative;
 }
 
+a {
+    text-decoration: none;
+}
+
 h2 {
     font-size: 3em;
     font-weight: bold;
@@ -29,6 +33,14 @@ input:focus, button:focus {
     color: #E6F4FF;
     line-height: 1.203125em;
     margin: 3px 0 3px;
+}
+
+.logout {
+    position: relative;
+    float: right;
+    bottom: .8em;
+    font-size: .8em;
+    margin-right: 1%;
 }
 
 .login {
