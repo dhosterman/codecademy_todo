@@ -11,9 +11,15 @@ from .models import Task
 
 # Create your views here.
 def home(request):
-    tasks = Task.objects.all().order_by('-id').filter(completed=False)
-    completed_tasks = Task.objects.all().order_by('-id').filter(completed=True)
     user = request.user
+    if user.is_active:
+        tasks = Task.objects.all().order_by('-id')\
+            .filter(completed=False, owner=user)
+        completed_tasks = Task.objects.all().order_by('-id')\
+            .filter(completed=True, owner=user)
+    else:
+        tasks = None
+        completed_tasks = None
     return render_to_response(
         'home.html',
         {
