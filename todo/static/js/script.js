@@ -34,6 +34,23 @@ function addToggleCompletedHandler (element) {
     })
 }
 
+// add delete handler to todo item
+function addDeleteHandler (element) {
+    element.click(function () {
+        var taskId = element.parent().data('task-id');
+        var task = element.parent();
+        $.post(
+            '/todo/delete_task',
+            {
+                task_id: taskId
+            },
+            function (data, textStatus, jqXHR) {
+                task.remove();
+            }
+        )
+    })
+}
+
 $(document).ready(function () {
 
     // handle csrf
@@ -66,8 +83,9 @@ $(document).ready(function () {
             function (data, textStatus, jqXHR) {
                 addTaskInput.val('');
                 var todoHeader = $('.to-do h2');
-                todoHeader.after('<article class="todo-item" data-task-id="' + data[0].pk + '"><input type="checkbox">' + data[0].fields.description + '</article>');
+                todoHeader.after('<article class="todo-item" data-task-id="' + data[0].pk + '"><input type="checkbox">' + data[0].fields.description + '<button name="Delete Task"></button></article>');
                 addToggleCompletedHandler($('.todo-item input').first());
+                addDeleteHandler($('.todo-item button').first());
             },
             'json'
         );
@@ -77,5 +95,10 @@ $(document).ready(function () {
     $('input[type="checkbox"]').each(function () {
         addToggleCompletedHandler($(this));
     });
+
+    // apply delete handler to all existing todo items
+    $('article button').each(function () {
+        addDeleteHandler($(this));
+    })
 
 });
