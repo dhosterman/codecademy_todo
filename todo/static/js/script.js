@@ -1,3 +1,13 @@
+// add checkbox handler to todo item
+    function addCheckHandlerUnfinished (element) {
+        element.change(function () {
+            if (this.checked) {
+                var doneGroup = $('.done-item');
+                doneGroup.first().before($(this).parent().clone());
+            }
+        })
+    }
+
 $(document).ready(function () {
 
     // handle csrf
@@ -34,6 +44,11 @@ $(document).ready(function () {
             },
             'json'
         );
-    })
+    });
+
+    // apply checkbox handler to all existing todo items
+    $('input[type="checkbox"]').each(function () {
+        addCheckHandlerUnfinished($(this));
+    });
 
 });
