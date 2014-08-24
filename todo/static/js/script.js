@@ -51,6 +51,21 @@ function addDeleteHandler (element) {
     })
 }
 
+// add edit handler to todo item
+function addEditHandler (element) {
+    element.click(function () {
+        var task = element.parent();
+        if (task.children('.description').is(':visible')) {
+            task.children('.description').hide();
+            task.children('input[type="text"]').show().focus()
+            .blur(function () {
+                task.children('input[type="text"]').hide();
+                task.children('.description').show();
+            });
+        }        
+    })
+}
+
 $(document).ready(function () {
 
     // handle csrf
@@ -97,8 +112,13 @@ $(document).ready(function () {
     });
 
     // apply delete handler to all existing todo items
-    $('article button').each(function () {
+    $('article button[name="Delete Task"]').each(function () {
         addDeleteHandler($(this));
+    })
+
+    // apply edit handler to all existing todo items
+    $('article button[name="Edit Task"]').each(function () {
+        addEditHandler($(this));
     })
 
 });

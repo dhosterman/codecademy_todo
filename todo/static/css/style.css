@@ -97,7 +97,6 @@ article input[type='checkbox'] {
 }
 
 article button {
-    background-image: url('/static/assets/images/delete.png');
     background-repeat: no-repeat;
     height: 12px;
     width: 12px;
@@ -110,7 +109,28 @@ article button {
     right: 1%;
 }
 
+button[name="Delete Task"] {
+    background-image: url('/static/assets/images/delete.png');
+    margin-left: 1%;
+}
+
+button[name="Edit Task"] {
+    background-image: url('/static/assets/images/edit.png');
+}
+
+article input[type='text'] {
+    width: 90%;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    border: none;
+}
+
 .done-item {
+    text-decoration: line-through;
+}
+
+.done-item input[type='text'] {
     text-decoration: line-through;
 }
 

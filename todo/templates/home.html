@@ -23,7 +23,13 @@
     <section class="to-do">
         <h2>To Do</h2>
         {% for task in tasks %}
-            <article class="todo-item" data-task-id={{ task.id }}><input type="checkbox">{{ task.description }}<button name="Delete Task"></button></article>
+            <article class="todo-item" data-task-id={{ task.id }}>
+                <input type="checkbox">
+                <span class="description">{{ task.description }}</span>
+                <input type="text" value="{{ task.description }}" style="display: none;">
+                <button name="Delete Task"></button>
+                <button name="Edit Task"></button>
+            </article>
         {% endfor %}
     </section>
 
@@ -31,7 +37,13 @@
     <section class="done">
         <h2>Recently Completed Items</h2>
         {% for task in completed_tasks %}
-            <article class="done-item" data-task-id={{ task.id }}><input type="checkbox" checked>{{ task.description }}</article>
+            <article class="done-item" data-task-id={{ task.id }}>
+                <input type="checkbox">
+                <span class="description">{{ task.description }}</span>
+                <input type="text" value="{{ task.description }}" style="display: none;">
+                <button name="Delete Task"></button>
+                <button name="Edit Task"></button>
+            </article>
         {% endfor %}
     </section>
 </body>
