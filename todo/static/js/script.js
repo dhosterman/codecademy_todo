@@ -63,25 +63,45 @@ function addEditHandler (element) {
             taskInput.show().focus()
             var strLength= taskInput.val().length;
             taskInput[0].setSelectionRange(strLength, strLength);
-            taskInput.blur(function () {
-                $.post(
-                    '/todo/edit_task',
-                    {
-                        task_id: taskId,
-                        description: taskInput.val()
-                    },
-                    function (data, textStatus, jqXHR) {
-                        taskInput.hide();
-                        taskInput.val(data[0].fields.description);
-                        taskDescription.text(data[0].fields.description);
-                        taskDescription.show();
-                    },
-                    'json'
-                )
-                
+            taskInput.on('blur keypress', function (e) {
+                if (e.type === 'blur' || e.type === 'keypress' && e.keyCode === 13) {
+                    $.post(
+                        '/todo/edit_task',
+                        {
+                            task_id: taskId,
+                            description: taskInput.val()
+                        },
+                        function (data, textStatus, jqXHR) {
+                            taskInput.hide();
+                            taskInput.val(data[0].fields.description);
+                            taskDescription.text(data[0].fields.description);
+                            taskDescription.show();
+                        },
+                        'json'
+                    )  
+                }
             });
         }        
     })
+}
+
+function createNewTask () {
+    var addTaskInput = $('#id_description');
+    $.post(
+        '/todo/add_task', 
+        {
+            description: addTaskInput.val()
+        }, 
+        function (data, textStatus, jqXHR) {
+            addTaskInput.val('');
+            var todoHeader = $('.to-do h2');
+            todoHeader.after('<article class="todo-item" data-task-id="' + data[0].pk + '"><input type="checkbox"><span class="description">' + data[0].fields.description + '</span><input type="text" value="' + data[0].fields.description + '" style="display: none;"><button name="Delete Task"></button><button name="Edit Task"></button></article>');
+            addToggleCompletedHandler($('.todo-item input').first());
+            addDeleteHandler($('.todo-item button[name="Delete Task"]').first());
+            addEditHandler($('.todo-item button[name="Edit Task"]').first());
+        },
+        'json'
+    );
 }
 
 $(document).ready(function () {
@@ -102,27 +122,19 @@ $(document).ready(function () {
         }
     });
 
-    // dom elements
-    var addTaskButton = $('button[name="Add Task"]');
-    var addTaskInput = $('#id_description');
-    
     // add task button handler
+    var addTaskButton = $('button[name="Add Task"]');
     addTaskButton.click(function () {
-        $.post(
-            '/todo/add_task', 
-            {
-                description: addTaskInput.val()
-            }, 
-            function (data, textStatus, jqXHR) {
-                addTaskInput.val('');
-                var todoHeader = $('.to-do h2');
-                todoHeader.after('<article class="todo-item" data-task-id="' + data[0].pk + '"><input type="checkbox">' + data[0].fields.description + '<button name="Delete Task"></button></article>');
-                addToggleCompletedHandler($('.todo-item input').first());
-                addDeleteHandler($('.todo-item button').first());
-            },
-            'json'
-        );
+        createNewTask();
     });
+
+    // add task input enter keypress handler
+    var addTaskInput = $('#id_description');
+    addTaskInput.on('keypress', function (e) {
+        if (e.keyCode === 13) {
+            createNewTask();
+        }
+    })
 
     // apply checkbox handler to all existing todo items
     $('input[type="checkbox"]').each(function () {
