@@ -23,3 +23,18 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={'placeholder': 'Password'})
     )
+
+
+class RegisterForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(
+        attrs={'placeholder': 'Username'})
+    )
+    first_name = forms.CharField(widget=forms.TextInput(
+        attrs={'placeholder': 'First Name'})
+    )
+    last_name = forms.CharField(widget=forms.TextInput(
+        attrs={'placeholder': 'Last Name'})
+    )
+    password = forms.CharField(widget=forms.TextInput(
+        attrs={'placeholder': 'Password'})
+    )

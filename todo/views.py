@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.core import serializers
 from django.contrib.auth import authenticate, login as login_user, logout as logout_user
-from .forms import NewTaskForm, LoginForm
+from .forms import NewTaskForm, LoginForm, RegisterForm
 from .models import Task
 
 
@@ -17,6 +17,7 @@ def home(request):
         {
             'new_task_form': NewTaskForm(),
             'login_form': LoginForm(),
+            'register_form': RegisterForm(),
             'tasks': tasks,
             'completed_tasks': completed_tasks,
             'user': user
