@@ -25,7 +25,18 @@
             <form action="{% url "todo.views.login" %}" method="post">
                 {% csrf_token %}
                 {{ login_form }}
-                <button name="Login">Login</button> or <button name="Register">Register</button>
+                <button name="Login">Login</button> or <button name="Register" type="button">Register</button>
+            </form>
+        </div>
+    {% endif %}
+
+    <!-- register -->
+    {% if not user.is_active %}
+        <div class="register" style="display: none;">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ register_form}}
+                <button name="Login">Sign Me Up!</button>
             </form>
         </div>
     {% endif %}

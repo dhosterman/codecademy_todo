@@ -151,4 +151,12 @@ $(document).ready(function () {
         addEditHandler($(this));
     })
 
+    // add register button handler
+    $('button[name="Register"]').click(function () {
+        var login = $('.login');
+        var register = $('.register');
+        login.hide();
+        register.show();
+    })
+
 });

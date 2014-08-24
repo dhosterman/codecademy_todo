@@ -47,13 +47,13 @@ input:focus, button:focus {
     margin-right: 1%;
 }
 
-.login {
+.login, .register {
     background-color: #466680;
     height: 20px;
     padding: 13px 2% 17px;
 }
 
-.login form {
+.login form, .register form {
     float: right;
 }
 
