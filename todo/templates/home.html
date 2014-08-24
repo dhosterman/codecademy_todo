@@ -31,6 +31,9 @@
     <!-- completed items -->
     <section class="done">
         <h2>Recently Completed Items</h2>
+        {% for task in completed_tasks %}
+            <article class="done-item" data-task-id={{ task.id }}><input type="checkbox" checked>{{ task.description }}</article>
+        {% endfor %}
         <article class="done-item"><input type="checkbox" checked>This thing is done</article>
     </section>
 </body>

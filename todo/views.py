@@ -8,12 +8,14 @@ from .models import Task
 
 # Create your views here.
 def home(request):
-    tasks = Task.objects.all().order_by('-id')
+    tasks = Task.objects.all().order_by('-id').filter(completed=False)
+    completed_tasks = Task.objects.all().order_by('-id').filter(completed=True)
     return render_to_response(
         'home.html',
         {
             'new_task_form': NewTaskForm(),
-            'tasks': tasks
+            'tasks': tasks,
+            'completed_tasks': completed_tasks
         },
         RequestContext(request)
     )
