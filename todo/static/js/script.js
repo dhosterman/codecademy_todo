@@ -19,7 +19,7 @@ function toggleCompleted (element) {
         } else {
             var taskId = element.parent().data('task-id');
             $.post(
-                '/todo/complete_task',
+                '/todo/uncomplete_task',
                 {
                     task_id: taskId
                 },

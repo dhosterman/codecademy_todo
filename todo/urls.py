@@ -6,5 +6,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'todo.views.home'),
     url(r'^add_task$', 'todo.views.add_task'),
-    url(r'^complete_task$', 'todo.views.complete_task')
+    url(r'^complete_task$', 'todo.views.complete_task'),
+    url(r'^uncomplete_task$', 'todo.views.uncomplete_task')
 )
