@@ -14,6 +14,7 @@
                         element.parent().remove();
                         doneItem.removeClass('todo-item');
                         doneItem.addClass('done-item');
+                        doneItem.off('click');
                         doneGroup.first().before(doneItem);
                     }
                 );
@@ -60,7 +61,7 @@ $(document).ready(function () {
     });
 
     // apply checkbox handler to all existing todo items
-    $('input[type="checkbox"]').each(function () {
+    $('.to-do > input[type="checkbox"]').each(function () {
         addCheckHandlerUnfinished($(this));
     });
 
