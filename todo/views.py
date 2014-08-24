@@ -50,3 +50,11 @@ def uncomplete_task(request):
     task.completed = False
     task.save()
     return HttpResponse(serializers.serialize('json', [task]))
+
+
+def delete_task(request):
+    """ given a request with a task, delete the task """
+    task_id = request.POST.get('task_id')
+    task = Task.objects.get(pk=task_id)
+    task.delete()
+    return HttpResponse(serializers.serialize('json', [task]))
