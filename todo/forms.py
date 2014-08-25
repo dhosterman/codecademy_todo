@@ -35,6 +35,6 @@ class RegisterForm(forms.Form):
     last_name = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder': 'Last Name'})
     )
-    password = forms.CharField(widget=forms.TextInput(
+    password = forms.CharField(widget=forms.PasswordInput(
         attrs={'placeholder': 'Password'})
     )
