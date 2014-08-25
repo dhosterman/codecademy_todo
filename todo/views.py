@@ -2,7 +2,8 @@ from django.shortcuts import render_to_response, redirect
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.core import serializers
-from django.contrib.auth import authenticate, login as login_user, logout as logout_user
+from django.contrib.auth import authenticate, login as login_user, \
+    logout as logout_user
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.db import IntegrityError
@@ -75,7 +76,8 @@ def delete_task(request):
 
 
 def edit_task(request):
-    """ given a request with a task, set the task description in the database and return a json object representing the newly updated record """
+    """ given a request with a task, set the task description in the database
+     and return a json object representing the newly updated record """
     task_id = request.POST.get('task_id')
     description = request.POST.get('description')
     task = Task.objects.get(pk=task_id)
