@@ -176,6 +176,17 @@ article input[type='text'] {
     text-decoration: line-through;
 }
 
+.icons {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.icons img {
+    height: 64px;
+    width: 64px;
+    margin: 2%;
+}
+
 .clearfix:after {
   content: "";
   display: table;

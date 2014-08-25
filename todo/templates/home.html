@@ -92,7 +92,24 @@
                 <button name="Edit Task"></button>
             </article>
         {% endfor %}
+
+        {% if not user.is_active %}
+            <article class="done-item">
+                <input type="checkbox">
+                <span class="description">Push this project to Github!</span>
+                <input type="text" value="Push this project to Github!" style="display: none;">
+                <button name="Delete Task"></button>
+                <button name="Edit Task"></button>
+            </article>
+        {% endif %}
     </section>
+
+    <!-- technology icons -->
+    <div class="icons">
+        <a href="https://www.djangoproject.com/"><img src="{% static "assets/images/dj.png" %}" alt="Django"></a>
+        <a href="http://jquery.com/"><img src="{% static "assets/images/jquery_64_black.png" %}" alt="jQuery"></a>
+        <a href="https://github.com/dhosterman/codecademy_todo"><img src="{% static "assets/images/github_64_black.png" %}" alt="Github"></a>
+    </div>
 </body>
 <script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
 <script src="{% static "bower_components/jquery-cookie/jquery.cookie.js" %}"></script>
