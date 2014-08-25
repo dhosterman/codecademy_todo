@@ -56,7 +56,7 @@ target/
 *.DS_Store
 
 # production
-codecademy_todo/settings.py
+codecademy_todo/dev_settings.py
 
 # database
 db.sqlite3
