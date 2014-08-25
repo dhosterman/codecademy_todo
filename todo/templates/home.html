@@ -27,6 +27,7 @@
                 {{ login_form }}
                 <button name="Login">Login</button> or <button name="Register" type="button">Register</button>
             </form>
+            <span class="message">{% for message in messages %} {{ message }} {% endfor %}</span>
         </div>
     {% endif %}
 
