@@ -87,21 +87,23 @@ function addEditHandler (element) {
 
 function createNewTask () {
     var addTaskInput = $('#id_description');
-    $.post(
-        '/todo/add_task', 
-        {
-            description: addTaskInput.val()
-        }, 
-        function (data, textStatus, jqXHR) {
-            addTaskInput.val('');
-            var todoHeader = $('.to-do h2');
-            todoHeader.after('<article class="todo-item" data-task-id=' + data[0].pk + '><input type="checkbox"><span class="description" style="margin-left: 6px;">' + data[0].fields.description + '</span><input type="text" value="' + data[0].fields.description + '" style="display: none;"><button name="Delete Task"></button><button name="Edit Task"></button></article>');
-            addToggleCompletedHandler($('.todo-item input').first());
-            addDeleteHandler($('.todo-item button[name="Delete Task"]').first());
-            addEditHandler($('.todo-item button[name="Edit Task"]').first());
-        },
-        'json'
-    );
+    if (addTaskInput.val().match(/\S+/)) {
+        $.post(
+            '/todo/add_task', 
+            {
+                description: addTaskInput.val()
+            }, 
+            function (data, textStatus, jqXHR) {
+                addTaskInput.val('');
+                var todoHeader = $('.to-do h2');
+                todoHeader.after('<article class="todo-item" data-task-id=' + data[0].pk + '><input type="checkbox"><span class="description" style="margin-left: 6px;">' + data[0].fields.description + '</span><input type="text" value="' + data[0].fields.description + '" style="display: none;"><button name="Delete Task"></button><button name="Edit Task"></button></article>');
+                addToggleCompletedHandler($('.todo-item input').first());
+                addDeleteHandler($('.todo-item button[name="Delete Task"]').first());
+                addEditHandler($('.todo-item button[name="Edit Task"]').first());
+            },
+            'json'
+        ); 
+    } 
 }
 
 $(document).ready(function () {
