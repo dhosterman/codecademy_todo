@@ -11,30 +11,31 @@ class NewTaskForm(forms.ModelForm):
         widgets = {
             'description': TextInput(attrs={
                 'placeholder': 'Enter new task...',
-                'autofocus': True
+                'autofocus': True,
+                'required': True
                 })
         }
 
 
 class LoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': 'Username'})
+        attrs={'placeholder': 'Username', 'required': True})
     )
     password = forms.CharField(widget=forms.PasswordInput(
-        attrs={'placeholder': 'Password'})
+        attrs={'placeholder': 'Password', 'required': True})
     )
 
 
 class RegisterForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': 'Username'})
+        attrs={'placeholder': 'Username', 'required': True})
     )
     first_name = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': 'First Name'})
+        attrs={'placeholder': 'First Name', 'required': True})
     )
     last_name = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': 'Last Name'})
+        attrs={'placeholder': 'Last Name', 'required': True})
     )
     password = forms.CharField(widget=forms.PasswordInput(
-        attrs={'placeholder': 'Password'})
+        attrs={'placeholder': 'Password', 'required': True})
     )
