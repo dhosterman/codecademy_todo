@@ -5,6 +5,7 @@ from django.core import serializers
 from django.contrib.auth import authenticate, login as login_user, logout as logout_user
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.db import IntegrityError
 from .forms import NewTaskForm, LoginForm, RegisterForm
 from .models import Task
 
@@ -112,13 +113,20 @@ def register(request):
     first_name = request.POST.get('first_name')
     last_name = request.POST.get('last_name')
     password = request.POST.get('password')
-    user = User.objects.create_user(
-        username=username,
-        first_name=first_name,
-        last_name=last_name,
-        password=password
-    )
-    user.save()
-    authenticated = authenticate(username=username, password=password)
-    login_user(request, authenticated)
+    try:
+        user = User.objects.create_user(
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            password=password
+        )
+        user.save()
+        authenticated = authenticate(username=username, password=password)
+        login_user(request, authenticated)
+    except IntegrityError:
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'This user already exists.'
+        )
     return redirect(home)

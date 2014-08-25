@@ -39,6 +39,7 @@
                 {{ register_form }}
                 <button name="Login">Sign Me Up!</button>
             </form>
+            <span class="message">{% for message in messages %} {{ message }} {% endfor %}</span>
         </div>
     {% endif %}
 
