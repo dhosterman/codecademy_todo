@@ -20,6 +20,11 @@ h2 {
     text-align: center;
 }
 
+button {
+    cursor: pointer;
+    cursor: hand;
+}
+
 input:focus, button:focus {
     outline: none;
 }
@@ -123,6 +128,7 @@ article {
     height: 44px;
     position: relative;
     margin: 0 0 5px 0;
+    overflow: auto;
 }
 
 article input[type='checkbox'] {
